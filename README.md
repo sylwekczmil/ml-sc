@@ -3,9 +3,10 @@
 A simple machine learning system consisting of multiple components:
 * Frontend App [TypeScript + Angular]
 * Gateway [Java + Spring Boot]
-* 3 Predictors [Python + scikit-learn]
+* Setup Storage [PostgreSQL]
+* Prediction Storage [MongoDB]
 * Message Broker [Kafka]
-
+* 3 Predictors [Python + scikit-learn]
 
 #### Source code on GitLab
 https://gitlab.com/ml-sc
@@ -23,6 +24,8 @@ flowchart TD;
   Gateway <--> Cognito;
   subgraph EC2/EKS;
   Gateway <--> Kafka;
+  Gateway <--> MongoDB;
+  Gateway <--> PostgreSQL;
   Kafka <--> Predictor1;
   Kafka <--> Predictor2;
   Kafka <--> Predictor3;
